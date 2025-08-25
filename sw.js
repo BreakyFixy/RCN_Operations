@@ -1,5 +1,5 @@
-const APP_CACHE = 'app-v3';
-const RUNTIME_CACHE = 'runtime-v1';
+const APP_CACHE = 'app-v4';
+const RUNTIME_CACHE = 'runtime-v2';
 
 const APP_ASSETS = [
   './',
