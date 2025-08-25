@@ -60,8 +60,8 @@
   map.fitWorld({ animate:false });
   map.once('moveend', () => map.setZoom(map.getZoom()+1, { animate:false }));
 
-  // Use the new dedicated marker SVG, not the PWA icons
-  const mapleIcon = L.icon({ iconUrl:"./marker-maple.svg", iconSize:[30,30], iconAnchor:[15,15], className:"leaf-icon" });
+  // Correct marker: use the provided Maple_Leaf.svg
+  const mapleIcon = L.icon({ iconUrl:"./Maple_Leaf.svg", iconSize:[30,30], iconAnchor:[15,15], className:"leaf-icon" });
 
   OPS.forEach(op => L.marker([op.lat, op.lng], {icon:mapleIcon}).addTo(map).bindPopup(buildPopup(op), {maxWidth:420}));
 
@@ -125,9 +125,28 @@
       card.appendChild(img); card.appendChild(cap); grid.appendChild(card);
     }
     function testImage(url, cb){
-      const im = new Image(); let done = false;  
+      const im = new Image(); let done = false;
+      const to = setTimeout(() => { if(!done){ done=true; cb(false); } }, 12000);
+      im.onload = () => { if(!done){ done=true; clearTimeout(to); cb(true); } };
+      im.onerror = () => { if(!done){ done=true; clearTimeout(to); cb(false); } };
+      im.src = url;
     }
   }
+
+  function openVideos(op){
+    overlay.classList.add('active'); body.textContent='';
+    const grid = document.createElement('div'); grid.className='ytgrid';
+    (MEDIA[op.id]?.videos || []).slice(0,10).forEach(v=>{
+      const f=document.createElement('iframe'); f.className='ytcard';
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      f.allowFullscreen=true; f.title=v.en;
+      f.src='https://www.youtube.com/embed/'+v.id;
+      grid.appendChild(f);
+    });
+    body.appendChild(grid);
+  }
+
   function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
   if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }
   </script>

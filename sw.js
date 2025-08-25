@@ -1,10 +1,9 @@
-const APP_CACHE = 'app-v2';
+const APP_CACHE = 'app-v3';
 const RUNTIME_CACHE = 'runtime-v1';
 
 const APP_ASSETS = [
   './',
   './index.html',
-  './marker-maple.svg',
   './Maple_Leaf.svg',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js'
