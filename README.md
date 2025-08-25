@@ -1,21 +1,21 @@
-# RCN Operations Map — PWA v2 (marker fix)
+# RCN Operations Map — PWA v3 (uses provided Maple_Leaf.svg as marker)
 
-This build uses **marker-maple.svg** for Leaflet markers (separate from app icons) and bumps the service worker cache to **v2**.
+What changed
+- Leaflet marker icon now points to **Maple_Leaf.svg** (the file you supplied).
+- Service worker cache bumped to **app-v3** to force browsers to fetch the updated assets.
 
-## Update steps (GitHub Desktop)
+Update steps (GitHub Desktop)
 1. Download and unzip this package.
 2. In GitHub Desktop, open your `RCN Operations` repo.
-3. Copy these files into the repo root (overwrite existing):
+3. Copy these into the repo root, overwriting existing:
    - `index.html`
    - `sw.js`
-   - `marker-maple.svg`
-   - `manifest.webmanifest`
    - `Maple_Leaf.svg`
-   - `icons/icon-192.png`, `icons/icon-512.png` (keep the folder)
-4. Commit with a message like: `Use marker-maple.svg; bump SW to v2`.
-5. Push to origin. Cloudflare Pages will auto-redeploy.
-6. After deploy, hard refresh the site (**Ctrl/⌘ + Shift + R**). If needed, open DevTools → Application → Service Workers → **Update**.
+   - `manifest.webmanifest`
+   - `icons/icon-192.png`, `icons/icon-512.png`
+4. Commit: `Use Maple_Leaf.svg for markers; bump SW to v3` and push.
+5. After Cloudflare redeploys: **hard refresh** (Ctrl/⌘ + Shift + R). If needed: DevTools → Application → Service Workers → **Update**.
 
-## Sanity checks
-- Open `/marker-maple.svg` directly — you should see the red leaf SVG.
-- Inspect a marker element — its `src` should be `marker-maple.svg`.
+Sanity checks
+- Open `/Maple_Leaf.svg` on your live URL — see the red leaf SVG.
+- Inspect a marker element — its `src` should be `Maple_Leaf.svg`.
