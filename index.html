@@ -1,4 +1,4 @@
-<!-- v4: using Maple_Leaf.svg as the Leaflet marker; SW cache app-v4 -->
+<!-- v5: restore all 19 ops; Maple_Leaf.svg marker; SW cache app-v5 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,22 +53,104 @@
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
-  const OPS = [{"id": 1, "name_en": "Battle of the Atlantic", "name_fr": "Bataille de l’Atlantique", "theatre": "North Atlantic", "years": "1939–1945", "desc_en": "Longest WWII battle; RCN escorted convoys and fought U‑boats to keep the UK supplied.", "desc_fr": "Plus longue bataille de la Deuxième Guerre mondiale; la MRC escorte des convois et combat les U‑boats pour ravitailler le Royaume‑Uni.", "lat": 45.0, "lng": -30.0}, {"id": 2, "name_en": "D‑Day (Normandy Landings)", "name_fr": "Jour J (débarquements de Normandie)", "theatre": "English Channel / Normandy", "years": "1944", "desc_en": "RCN minesweeping, escort, and naval gunfire support for Allied landings at Juno Beach.", "desc_fr": "MCM de la MRC, escorte et tirs navals pour l’assaut allié à Juno Beach.", "lat": 49.5, "lng": -0.5}];
-  const MEDIA = {"1": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:HMCS_Sackville_K181_2009.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:HMCS_Sackville_K181_2009.jpg?width=1600", "en": "HMCS Sackville (K181), preserved Flower‑class corvette.", "fr": "NCSM Sackville (K181), corvette de la classe Flower préservée."}], "videos": [{"id": "zfKdqm-BK-8", "en": "Battle of the Atlantic — 80th Anniversary (RCN)", "fr": "Bataille de l’Atlantique — 80e anniversaire (MRC)"}]}};
+  const OPS = [{"id": 1, "name_en": "Battle of the Atlantic", "name_fr": "Bataille de l’Atlantique", "theatre": "North Atlantic", "years": "1939–1945", "desc_en": "Longest WWII battle; RCN escorted convoys, fought U‑boats to keep UK supplied.", "desc_fr": "Plus longue bataille de la Deuxième Guerre mondiale; la MRC escorte des convois et combat les U‑boats pour ravitailler le Royaume‑Uni.", "lat": 45.0, "lng": -30.0}, {"id": 2, "name_en": "D‑Day (Normandy Landings)", "name_fr": "Jour J (débarquements de Normandie)", "theatre": "English Channel / Normandy", "years": "1944", "desc_en": "Minesweeping, escort, and gunfire support for Allied landings at Juno Beach.", "desc_fr": "Drague, escorte et tirs navals pour les débarquements alliés à Juno Beach.", "lat": 49.5, "lng": -0.5}, {"id": 3, "name_en": "Battle of the St. Lawrence", "name_fr": "Bataille du Saint‑Laurent", "theatre": "Gulf of St. Lawrence", "years": "1942–1944", "desc_en": "Defended Canadian inland waters from U‑boat attacks on shipping routes.", "desc_fr": "Défense des eaux intérieures canadiennes contre les attaques des U‑boats.", "lat": 49.0, "lng": -63.0}, {"id": 4, "name_en": "Korean War Naval Ops", "name_fr": "Opérations navales — guerre de Corée", "theatre": "Korean Peninsula", "years": "1950–1953", "desc_en": "Destroyers provided shore bombardment, carrier screening, and patrol duties.", "desc_fr": "Des destroyers assurent tirs côtiers, protection de porte‑avions et patrouilles.", "lat": 37.5, "lng": 126.5}, {"id": 5, "name_en": "Suez Crisis Deployment", "name_fr": "Crise de Suez — déploiement", "theatre": "Eastern Mediterranean", "years": "1956–1957", "desc_en": "HMCS Magnificent transported troops and supplies for UN peacekeeping.", "desc_fr": "Le NCSM Magnificent transporte troupes et matériel pour le maintien de la paix de l’ONU.", "lat": 31.0, "lng": 32.0}, {"id": 6, "name_en": "Cold War NATO Patrols", "name_fr": "Patrouilles de l’OTAN — guerre froide", "theatre": "North Atlantic / GIUK Gap", "years": "1949–1991", "desc_en": "Anti‑submarine patrols and NATO exercises to deter Soviet naval threats.", "desc_fr": "Patrouilles ASM et exercices de l’OTAN pour dissuader la menace navale soviétique.", "lat": 62.0, "lng": -15.0}, {"id": 7, "name_en": "Operation Friction", "name_fr": "Opération Friction", "theatre": "Persian Gulf", "years": "1990–1991", "desc_en": "RCN ships enforced embargo and supported coalition during Gulf War.", "desc_fr": "Bâtiments de la MRC appliquent l’embargo et soutiennent la coalition durant la guerre du Golfe.", "lat": 26.0, "lng": 52.0}, {"id": 8, "name_en": "Operation Sharp Guard", "name_fr": "Opération Sharp Guard", "theatre": "Adriatic Sea", "years": "1993–1996", "desc_en": "NATO blockade during Yugoslav Wars; RCN enforced sanctions at sea.", "desc_fr": "Blocus maritime de l’OTAN durant les guerres yougoslaves; la MRC fait respecter les sanctions en mer.", "lat": 42.0, "lng": 17.0}, {"id": 9, "name_en": "Operation Apollo", "name_fr": "Opération Apollo", "theatre": "Arabian Sea / Indian Ocean", "years": "2001–2003", "desc_en": "Canada’s largest naval deployment since WWII; supported anti‑terror ops.", "desc_fr": "Plus grand déploiement naval canadien depuis 1945; appui aux opérations antiterroristes.", "lat": 22.0, "lng": 60.0}, {"id": 10, "name_en": "Operation Altair", "name_fr": "Opération Altair", "theatre": "Arabian Sea", "years": "2004–2008", "desc_en": "Follow‑on to Apollo; continued maritime security and coalition support.", "desc_fr": "Suite d’Apollo; sécurité maritime et appui à la coalition.", "lat": 24.0, "lng": 58.0}, {"id": 11, "name_en": "Operation Artemis", "name_fr": "Opération Artémis", "theatre": "Arabian Sea / Indian Ocean", "years": "2012–Present", "desc_en": "Counter‑terrorism and anti‑smuggling under Combined Maritime Forces (CTF‑150).", "desc_fr": "Lutte contre le terrorisme et la contrebande au sein des Combined Maritime Forces (CTF‑150).", "lat": 20.0, "lng": 60.0}, {"id": 12, "name_en": "Operation Caribbe", "name_fr": "Opération Caribbe", "theatre": "Caribbean & Eastern Pacific", "years": "2006–Present", "desc_en": "Counter‑narcotics mission with US‑led coalition; major drug seizures.", "desc_fr": "Mission antidrogue avec une coalition dirigée par les États‑Unis; importantes saisies.", "lat": 15.0, "lng": -75.0}, {"id": 13, "name_en": "Operation Reassurance", "name_fr": "Opération Réassurance", "theatre": "Europe / Mediterranean / Baltic", "years": "2014–Present", "desc_en": "NATO assurance and deterrence; RCN ships in SNMG task groups.", "desc_fr": "Assurance et dissuasion de l’OTAN; frégates de la MRC dans les groupes maritimes permanents (SNMG).", "lat": 56.0, "lng": 20.0}, {"id": 14, "name_en": "Operation Projection", "name_fr": "Opération Projection", "theatre": "Indo‑Pacific / Euro‑Atlantic", "years": "2018–Present", "desc_en": "Forward presence, exercises, and engagement with allies globally.", "desc_fr": "Présence avancée, exercices et engagement avec les alliés à l’échelle mondiale.", "lat": 14.0, "lng": 120.0}, {"id": 15, "name_en": "Operation Neon", "name_fr": "Opération Néon", "theatre": "Western Pacific", "years": "2018–Present", "desc_en": "Enforces UN sanctions on North Korea; surveillance and interdiction.", "desc_fr": "Application des sanctions de l’ONU contre la Corée du Nord; surveillance et interdiction.", "lat": 38.0, "lng": 128.0}, {"id": 16, "name_en": "Operation Nanook", "name_fr": "Opération Nanook", "theatre": "Canadian Arctic", "years": "2007–Present", "desc_en": "Sovereignty patrols, Arctic exercises, and community engagement.", "desc_fr": "Patrouilles de souveraineté, exercices arctiques et engagement communautaire.", "lat": 72.0, "lng": -80.0}, {"id": 17, "name_en": "Operation Hestia", "name_fr": "Opération Hestia", "theatre": "Haiti", "years": "2010", "desc_en": "Humanitarian relief after earthquake; RCN ships delivered aid.", "desc_fr": "Aide humanitaire après le séisme; des navires de la MRC livrent du secours.", "lat": 18.5, "lng": -72.3}, {"id": 18, "name_en": "Operation Mobile", "name_fr": "Opération Mobile", "theatre": "Libya (Mediterranean)", "years": "2011", "desc_en": "NATO maritime security and embargo enforcement during Libyan conflict.", "desc_fr": "Sécurité maritime de l’OTAN et application de l’embargo durant le conflit libyen.", "lat": 33.0, "lng": 13.0}, {"id": 19, "name_en": "Lebanon Evacuation", "name_fr": "Évacuation du Liban", "theatre": "Eastern Mediterranean", "years": "2006", "desc_en": "Assisted in evacuation of Canadians during Lebanon crisis.", "desc_fr": "Aide à l’évacuation de Canadiens durant la crise au Liban.", "lat": 33.9, "lng": 35.5}];
+  const MEDIA = {"1": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:HMCS_Sackville_K181_2009.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:HMCS_Sackville_K181_2009.jpg?width=1600", "en": "HMCS Sackville (K181), preserved Flower‑class corvette.", "fr": "NCSM Sackville (K181), corvette de la classe Flower préservée."}, {"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Convoy_to_Britain_WWII_A31000.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Convoy_to_Britain_WWII_A31000.jpg?width=1600", "en": "Convoy escorted across the North Atlantic, WWII.", "fr": "Convoi escorté à travers l’Atlantique Nord, 2e GM."}, {"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Depth_charge_projector_LCP_LCI_41-42.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Depth_charge_projector_LCP_LCI_41-42.jpg?width=1600", "en": "Anti‑submarine weapons prepared on an escort.", "fr": "Armes anti‑sous‑marines prêtes à l’emploi sur un bâtiment d’escorte."}, {"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:German_submarine_U-190.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:German_submarine_U-190.jpg?width=1600", "en": "U‑190 after surrender to the RCN, 1945.", "fr": "U‑190 après reddition à la MRC, 1945."}], "videos": [{"id": "zfKdqm-BK-8", "en": "Battle of the Atlantic — 80th Anniversary (RCN)", "fr": "Bataille de l’Atlantique — 80e anniversaire (MRC)"}, {"id": "aIo9pWtTD6M", "en": "Battle of the Atlantic overview (Juno Beach Centre)", "fr": "Présentation de la bataille de l’Atlantique (Centre Juno Beach)"}]}, "2": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Canada_JunoBeach_1_RCNCOMMANDO.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Canada_JunoBeach_1_RCNCOMMANDO.jpg?width=1600", "en": "RCN Beach Commando at Juno, Jun 1944.", "fr": "Commando de plage de la MRC à Juno, juin 1944."}], "videos": [{"id": "RKZj1o27sDI", "en": "Canadian minesweepers clear channels for D‑Day (archival).", "fr": "Dragueurs canadiens ouvrant les chenaux pour le Jour J (archives)."}]}, "3": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:German_submarine_U-190.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:German_submarine_U-190.jpg?width=1600", "en": "U‑190 surrenders to the RCN off Newfoundland.", "fr": "Reddition de l’U‑190 à la MRC au large de Terre‑Neuve."}], "videos": []}, "4": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:HMCS_Athabaskan_AWM_P05890.060.jpeg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:HMCS_Athabaskan_AWM_P05890.060.jpeg?width=1600", "en": "HMCS Athabaskan in Korean waters, 1951–52.", "fr": "NCSM Athabaskan dans les eaux coréennes, 1951–1952."}, {"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:USS_BUCK_ammo_transfer_to_HMCS_HAIDA_off_Korea.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:USS_BUCK_ammo_transfer_to_HMCS_HAIDA_off_Korea.jpg?width=1600", "en": "Ammo transfer with HMCS Haida off Korea, 1953.", "fr": "Transfert de munitions avec le NCSM Haida au large de la Corée, 1953."}], "videos": []}, "5": {"photos": [{"files": ["File:HMCS_Magnificent_(CVL_21).jpg", "File:HMCS_Magnificent_CVL_21_1953.jpg", "File:HMCS_Magnificent_1953.jpg", "File:HMCS_Magnificent_(21).jpg"], "en": "HMCS Magnificent at sea — Suez era.", "fr": "NCSM Magnificent en mer — période de Suez."}], "videos": []}, "6": {"photos": [{"files": ["File:HMCS_St._Laurent_(DDE_205).jpg", "File:HMCS_St_Laurent_(DDE_205).jpg", "File:HMCS_St_Laurent_DDE_205.jpg"], "en": "HMCS St. Laurent, lead ship of the class.", "fr": "NCSM St. Laurent, tête de série."}, {"files": ["File:HMCS_Iroquois_(DDG_280).jpg", "File:HMCS_Iroquois_DDG_280.jpg", "File:HMCS_Iroquois_(DDG-280).jpg"], "en": "HMCS Iroquois, Iroquois-class destroyer.", "fr": "NCSM Iroquois, destroyer de la classe Iroquois."}, {"files": ["File:HMCS_Ottawa_(DDE_229).jpg", "File:HMCS_Ottawa_DDE_229.jpg", "File:HMCS_Ottawa_(DDE-229).jpg"], "en": "HMCS Ottawa, Restigouche-class.", "fr": "NCSM Ottawa, classe Restigouche."}], "videos": []}, "7": {"photos": [{"files": ["File:HMCS_Terra_Nova_(DDE_259).jpg", "File:HMCS_Terra_Nova_DDE_259.jpg", "File:HMCS_Protecteur_(AOR_509).jpg", "File:HMCS_Protecteur_AOR_509.jpg"], "en": "RCN Gulf War era — Terra Nova / Protecteur.", "fr": "Époque de la guerre du Golfe — Terra Nova / Protecteur."}], "videos": []}, "8": {"photos": [], "videos": []}, "9": {"photos": [], "videos": []}, "10": {"photos": [], "videos": []}, "11": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Canadian_navy_frigate_HMCS_Calgary_(FFH_335).jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Canadian_navy_frigate_HMCS_Calgary_(FFH_335).jpg?width=1600", "en": "HMCS Calgary — key ship on Op ARTEMIS (2021).", "fr": "NCSM Calgary — navire clé de l’opération ARTÉMIS (2021)."}], "videos": [{"id": "e_fwo2on_b0", "en": "HMCS Calgary — Asia‑Pacific & Arabian Sea deployment (CAF).", "fr": "NCSM Calgary — déploiement Asie‑Pacifique et mer d’Arabie (FAC)."}]}, "12": {"photos": [], "videos": []}, "13": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:OP_REASSURANCE_(50702436362).jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:OP_REASSURANCE_(50702436362).jpg?width=1600", "en": "Canadian frigate with NATO — Op REASSURANCE.", "fr": "Frégate canadienne avec l’OTAN — Opération RÉASSURANCE."}], "videos": [{"id": "mi10f9DNXAM", "en": "Operation REASSURANCE — CAF update.", "fr": "Opération RÉASSURANCE — mise à jour des FAC."}]}, "14": {"photos": [], "videos": []}, "15": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Canadian_Navy_HMCS_Winnipeg_FFH338.JPG?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Canadian_Navy_HMCS_Winnipeg_FFH338.JPG?width=1600", "en": "HMCS Winnipeg — regular participant in Op NEON.", "fr": "NCSM Winnipeg — participant régulier à l’opération NÉON."}], "videos": []}, "16": {"photos": [{"thumb": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Shiprider_exchange_between_RCN_and_USCG.jpg?width=480", "full": "https://commons.wikimedia.org/wiki/Special:FilePath/File:Shiprider_exchange_between_RCN_and_USCG.jpg?width=1600", "en": "RCN–USCG teamwork during Arctic operations.", "fr": "Travail d’équipe MRC–USCG durant des opérations dans l’Arctique."}], "videos": []}, "17": {"photos": [], "videos": []}, "18": {"photos": [], "videos": []}, "19": {"photos": [], "videos": []}};
 
   const map = L.map('map', { worldCopyJump:false, zoomControl:true, attributionControl:true });
   L.tileLayer('https://tile-c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { maxZoom:18, minZoom:2, noWrap:true, attribution:'&copy; OpenStreetMap, &copy; CARTO' }).addTo(map);
   map.fitWorld({ animate:false });
   map.once('moveend', () => map.setZoom(map.getZoom()+1, { animate:false }));
 
+  // Marker uses the provided Maple_Leaf.svg
   const mapleIcon = L.icon({ iconUrl:"./Maple_Leaf.svg", iconSize:[30,30], iconAnchor:[15,15], className:"leaf-icon" });
 
-  OPS.forEach(op => L.marker([op.lat, op.lng], {icon:mapleIcon}).addTo(map).bindPopup('<b>'+op.name_en+'</b> — '+op.years+'<br>'+op.desc_en+'<br><i>'+op.name_fr+'</i><br>'+op.desc_fr, {maxWidth:420}));
+  // Add all markers
+  OPS.forEach(op => L.marker([op.lat, op.lng], {icon:mapleIcon}).addTo(map).bindPopup(buildPopup(op), {maxWidth:420}));
 
   document.getElementById('reset').onclick = () => { map.fitWorld({animate:true}); setTimeout(() => map.setZoom(map.getZoom()+1), 350); };
 
+  function buildPopup(op) {
+    const p = document.createElement('div');
+    p.innerHTML = '<div class="popup-title">'+op.name_en+' — '+op.years+'</div>' +
+                  '<div class="popup-sub">'+op.name_fr+'</div>' +
+                  '<div class="popup-desc">'+op.desc_en+'</div>' +
+                  '<div class="popup-desc">'+op.desc_fr+'</div>' +
+                  '<div class="icons"></div>';
+    const icons = p.querySelector('.icons');
+    const photoBtn = iconBtn('Photos / Photos','photo',() => openPhotos(op));
+    const videoBtn = iconBtn('Videos / Vidéos','video',() => openVideos(op));
+    const hasP = (MEDIA[op.id]?.photos || []).length > 0;
+    const hasV = (MEDIA[op.id]?.videos || []).length > 0;
+    if (!hasP) photoBtn.disabled = true;
+    if (!hasV) videoBtn.disabled = true;
+    icons.appendChild(photoBtn); icons.appendChild(videoBtn);
+    return p;
+  }
+  function iconBtn(title, kind, onClick){
+    const b = document.createElement('button'); b.className = 'icon-btn'; b.title = title;
+    b.innerHTML = (kind==='photo')
+      ? '<svg viewBox="0 0 24 24"><path d="M9 3l2 2h6a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h2zm3 10l3 4H7l2-3 1 1 2-2zM14.5 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/></svg>'
+      : '<svg viewBox="0 0 24 24"><path d="M4 5h12a2 2 0 0 1 2 2v2l3-2v10l-3-2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm6 3.5v7l6-3.5-6-3.5z"/></svg>';
+    b.onclick = onClick; return b;
+  }
+
+  const overlay = document.getElementById('overlay'), body = document.getElementById('panel-body');
+  document.getElementById('close').onclick = () => overlay.classList.remove('active');
+  overlay.addEventListener('click', e => { if(e.target.id==='overlay') overlay.classList.remove('active'); });
+  const big = document.getElementById('bigview'), bigimg = document.getElementById('bigimg'); big.addEventListener('click', () => big.classList.remove('active'));
+
+  function commonsUrl(file, width){ return 'https://commons.wikimedia.org/wiki/Special:FilePath/'+encodeURIComponent(file)+'?width='+width; }
+
+  function openPhotos(op){
+    overlay.classList.add('active'); body.textContent='';
+    const grid = document.createElement('div'); grid.className='thumbs'; body.appendChild(grid);
+    const list = (MEDIA[op.id]?.photos || []).slice(0, 15);
+    list.forEach(item => {
+      if (item.thumb || item.full) { addIfLoads(item.thumb, item.full, item.en, item.fr); }
+      else if (item.file) { const t = commonsUrl(item.file, 480), f = commonsUrl(item.file, 1600); addIfLoads(t, f, item.en, item.fr); }
+      else if (item.files && item.files.length) { tryNext(item.files.slice(), item.en, item.fr); }
+    });
+
+    function tryNext(cands, en, fr){
+      if (!cands.length) return;
+      const f = cands.shift();
+      const tUrl = commonsUrl(f, 480), fUrl = commonsUrl(f, 1600);
+      testImage(tUrl, ok => { ok ? addCard(tUrl, fUrl, en, fr) : tryNext(cands, en, fr); });
+    }
+    function addIfLoads(tUrl, fUrl, en, fr){ testImage(tUrl, ok => { if (ok) addCard(tUrl, fUrl, en, fr); }); }
+    function addCard(thumbUrl, fullUrl, en, fr){
+      const card = document.createElement('div'); card.className='thumb';
+      const img = document.createElement('img'); img.src = thumbUrl; img.alt = en; img.decoding='async';
+      img.onclick = () => { bigimg.src = fullUrl || thumbUrl; big.classList.add('active'); };
+      const cap = document.createElement('div'); cap.className='cap';
+      cap.innerHTML = '<div class="en">'+escapeHtml(en)+'</div><div class="fr">'+escapeHtml(fr)+'</div>';
+      card.appendChild(img); card.appendChild(cap); grid.appendChild(card);
+    }
+    function testImage(url, cb){
+      const im = new Image(); let done = false;
+      const to = setTimeout(() => { if(!done){ done=true; cb(false); } }, 12000);
+      im.onload = () => { if(!done){ done=true; clearTimeout(to); cb(true); } };
+      im.onerror = () => { if(!done){ done=true; clearTimeout(to); cb(false); } };
+      im.src = url;
+    }
+  }
+
+  function openVideos(op){
+    overlay.classList.add('active'); body.textContent='';
+    const grid = document.createElement('div'); grid.className='ytgrid';
+    (MEDIA[op.id]?.videos || []).slice(0,10).forEach(v=>{
+      const f=document.createElement('iframe'); f.className='ytcard';
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      f.allowFullscreen=true; f.title=v.en;
+      f.src='https://www.youtube.com/embed/'+v.id;
+      grid.appendChild(f);
+    });
+    body.appendChild(grid);
+  }
+
+  function escapeHtml(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
   if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./sw.js'); }
   </script>
-  <!-- v4 end -->
 </body>
 </html>
